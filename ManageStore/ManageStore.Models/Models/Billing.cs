@@ -14,31 +14,25 @@ namespace ManageStore.Models.Models
         /// </summary>
         [Key]
         public int Id { get; set; }
+
         /// <summary>
-        /// The name of the product
+        /// The billing Voucher Number
         /// </summary>
-        public Product Product { get; set; }
+        public int VoucherNumber { get; set; }
+
         /// <summary>
-        /// The product that has changed it price.
+        /// The billing receipt type
         /// </summary>
-        public int ProductId { get; set; }
+        public ReceiptType ReceiptType { get; set; }
 
         /// <summary>
         /// The name of the buyer
         /// </summary>
-        public string Name { get; set; }
+        public string CustomerName { get; set; }
         /// <summary>
         /// The lastname of the buyer
         /// </summary>
-        public string LastName { get; set; }
-        /// <summary>
-        /// The product quantity for the bill
-        /// </summary>
-        public double Quantity { get; set; }
-        /// <summary>
-        /// The product price for the bill
-        /// </summary>
-        public decimal Price { get; set; }
+        public string CustomerLastName { get; set; }
 
         /// <summary>
         /// The status according to the called actions
@@ -52,6 +46,14 @@ namespace ManageStore.Models.Models
         /// Automatic generated creation user id when a product is created
         /// </summary>
         public User CreatedBy { get; set; }
+        /// <summary>
+        /// Automatic generated Modified datetime when a product is modified
+        /// </summary>
+        public DateTime? ModifieDateTime { get; set; }
+        /// <summary>
+        /// Automatic generated Modified user id when a product is modified
+        /// </summary>
+        public User ModifiedBy { get; set; }
 
     }
 }

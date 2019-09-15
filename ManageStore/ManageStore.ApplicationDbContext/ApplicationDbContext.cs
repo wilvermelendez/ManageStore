@@ -1,4 +1,5 @@
-﻿using ManageStore.Models.Models;
+﻿using ManageStore.ApplicationDbContext.Config;
+using ManageStore.Models.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace ManageStore.ApplicationDbContext
@@ -16,6 +17,16 @@ namespace ManageStore.ApplicationDbContext
         {
 
 
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.ApplyConfiguration(new BillingConfiguration());
+            modelBuilder.ApplyConfiguration(new BillingDetailConfiguration());
+            modelBuilder.ApplyConfiguration(new ProductLogConfiguration());
+            modelBuilder.ApplyConfiguration(new ProductConfiguration());
+            modelBuilder.ApplyConfiguration(new UserConfiguration());
         }
     }
 }

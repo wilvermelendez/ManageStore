@@ -25,6 +25,11 @@ namespace ManageStore.Models.Models
         /// <summary>
         /// The status according to the called actions
         /// </summary>
+
+        /// <summary>
+        /// The price of the product
+        /// </summary>
+        public decimal Price { get; set; }
         public RegisterStatus RegisterStatus { get; set; }
         /// <summary>
         /// Automatic generated creation Datetime when a product is created
@@ -37,7 +42,7 @@ namespace ManageStore.Models.Models
         /// <summary>
         /// Automatic generated modified Datetime when a product is modified
         /// </summary>
-        public DateTime ModifieDateTime { get; set; }
+        public DateTime? ModifieDateTime { get; set; }
         /// <summary>
         /// Automatic generated Modified user id when a product is modified
         /// </summary>

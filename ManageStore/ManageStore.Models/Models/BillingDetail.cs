@@ -4,29 +4,39 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ManageStore.Models.Models
 {
-    public class ProductLog
+    public class BillingDetail
     {
         /// <summary>
-        /// The id of the productLog
+        /// The id of the product
         /// </summary>
         [Key]
         public int Id { get; set; }
         /// <summary>
-        /// The product that has changed it price.
+        /// The billing parent
+        /// </summary>
+        public Billing Billing { get; set; }
+        /// <summary>
+        /// The billing parent id
+        /// </summary>
+        public int BillingId { get; set; }
+        /// <summary>
+        /// The name of the product
         /// </summary>
         public Product Product { get; set; }
         /// <summary>
         /// The product that has changed it price.
         /// </summary>
         public int ProductId { get; set; }
+
         /// <summary>
-        /// The price of the product
+        /// The product quantity for the bill
+        /// </summary>
+        public double Quantity { get; set; }
+        /// <summary>
+        /// The product price for the bill
         /// </summary>
         public decimal Price { get; set; }
-        /// <summary>
-        /// The new price of the product
-        /// </summary>
-        public decimal NewPrice { get; set; }
+
         /// <summary>
         /// The status according to the called actions
         /// </summary>
@@ -40,11 +50,11 @@ namespace ManageStore.Models.Models
         /// </summary>
         public User CreatedBy { get; set; }
         /// <summary>
-        /// Automatic generated Modified datetime when a row is modified
+        /// Automatic generated Modified datetime when a product is modified
         /// </summary>
         public DateTime? ModifieDateTime { get; set; }
         /// <summary>
-        /// Automatic generated Modified user id when a row is modified
+        /// Automatic generated Modified user id when a product is modified
         /// </summary>
         public User ModifiedBy { get; set; }
     }

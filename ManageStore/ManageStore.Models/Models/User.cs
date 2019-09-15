@@ -16,7 +16,7 @@ namespace ManageStore.Models.Models
         public RegisterStatus RegisterStatus { get; set; }
         public DateTime CreatedDateTime { get; set; }
         public User CreatedBy { get; set; }
-        public DateTime ModifieDateTime { get; set; }
+        public DateTime? ModifieDateTime { get; set; }
         public User ModifiedBy { get; set; }
     }
 }
