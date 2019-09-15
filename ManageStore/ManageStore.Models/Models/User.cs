@@ -1,0 +1,22 @@
+﻿using System;
+using System.ComponentModel.DataAnnotations;
+using ManageStore.Models.Enum;
+
+namespace ManageStore.Models.Models
+{
+    public class User
+    {
+
+        [Key]
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string LastName { get; set; }
+        public string Email { get; set; }
+
+        public RegisterStatus RegisterStatus { get; set; }
+        public DateTime CreatedDateTime { get; set; }
+        public User CreatedBy { get; set; }
+        public DateTime ModifieDateTime { get; set; }
+        public User ModifiedBy { get; set; }
+    }
+}
