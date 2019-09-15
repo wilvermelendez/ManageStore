@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using ManageStore.BusinessAccess.Repositories;
+using System.Threading.Tasks;
 
 namespace ManageStore.BusinessAccess
 {
@@ -8,8 +9,11 @@ namespace ManageStore.BusinessAccess
         public UnitOfWork(ApplicationDbContext.ApplicationDbContext context)
         {
             _context = context;
+            Products = new ProductRepository(context);
         }
 
+
+        public IProductRepository Products { get; }
 
         public async Task<int> Complete()
         {

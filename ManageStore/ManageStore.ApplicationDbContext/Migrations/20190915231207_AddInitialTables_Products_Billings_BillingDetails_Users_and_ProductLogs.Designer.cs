@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ManageStore.ApplicationDbContext.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190915225937_AddInitialTables_Products_Billing_BillingDetail_Users_and_ProductLogs")]
-    partial class AddInitialTables_Products_Billing_BillingDetail_Users_and_ProductLogs
+    [Migration("20190915231207_AddInitialTables_Products_Billings_BillingDetails_Users_and_ProductLogs")]
+    partial class AddInitialTables_Products_Billings_BillingDetails_Users_and_ProductLogs
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -55,7 +55,7 @@ namespace ManageStore.ApplicationDbContext.Migrations
 
                     b.HasIndex("ModifiedById");
 
-                    b.ToTable("Billing");
+                    b.ToTable("Billings");
                 });
 
             modelBuilder.Entity("ManageStore.Models.Models.BillingDetail", b =>
@@ -93,7 +93,7 @@ namespace ManageStore.ApplicationDbContext.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("BillingDetail");
+                    b.ToTable("BillingDetails");
                 });
 
             modelBuilder.Entity("ManageStore.Models.Models.Product", b =>

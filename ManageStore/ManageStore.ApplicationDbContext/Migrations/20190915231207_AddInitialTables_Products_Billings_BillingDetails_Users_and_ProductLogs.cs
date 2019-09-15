@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ManageStore.ApplicationDbContext.Migrations
 {
-    public partial class AddInitialTables_Products_Billing_BillingDetail_Users_and_ProductLogs : Migration
+    public partial class AddInitialTables_Products_Billings_BillingDetails_Users_and_ProductLogs : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -41,7 +41,7 @@ namespace ManageStore.ApplicationDbContext.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Billing",
+                name: "Billings",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -58,15 +58,15 @@ namespace ManageStore.ApplicationDbContext.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Billing", x => x.Id);
+                    table.PrimaryKey("PK_Billings", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Billing_Users_CreatedById",
+                        name: "FK_Billings_Users_CreatedById",
                         column: x => x.CreatedById,
                         principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Billing_Users_ModifiedById",
+                        name: "FK_Billings_Users_ModifiedById",
                         column: x => x.ModifiedById,
                         principalTable: "Users",
                         principalColumn: "Id",
@@ -106,7 +106,7 @@ namespace ManageStore.ApplicationDbContext.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "BillingDetail",
+                name: "BillingDetails",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -123,27 +123,27 @@ namespace ManageStore.ApplicationDbContext.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_BillingDetail", x => x.Id);
+                    table.PrimaryKey("PK_BillingDetails", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_BillingDetail_Billing_BillingId",
+                        name: "FK_BillingDetails_Billings_BillingId",
                         column: x => x.BillingId,
-                        principalTable: "Billing",
+                        principalTable: "Billings",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_BillingDetail_Users_CreatedById",
+                        name: "FK_BillingDetails_Users_CreatedById",
                         column: x => x.CreatedById,
                         principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_BillingDetail_Users_ModifiedById",
+                        name: "FK_BillingDetails_Users_ModifiedById",
                         column: x => x.ModifiedById,
                         principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_BillingDetail_Products_ProductId",
+                        name: "FK_BillingDetails_Products_ProductId",
                         column: x => x.ProductId,
                         principalTable: "Products",
                         principalColumn: "Id",
@@ -189,34 +189,34 @@ namespace ManageStore.ApplicationDbContext.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Billing_CreatedById",
-                table: "Billing",
-                column: "CreatedById");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Billing_ModifiedById",
-                table: "Billing",
-                column: "ModifiedById");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_BillingDetail_BillingId",
-                table: "BillingDetail",
+                name: "IX_BillingDetails_BillingId",
+                table: "BillingDetails",
                 column: "BillingId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_BillingDetail_CreatedById",
-                table: "BillingDetail",
+                name: "IX_BillingDetails_CreatedById",
+                table: "BillingDetails",
                 column: "CreatedById");
 
             migrationBuilder.CreateIndex(
-                name: "IX_BillingDetail_ModifiedById",
-                table: "BillingDetail",
+                name: "IX_BillingDetails_ModifiedById",
+                table: "BillingDetails",
                 column: "ModifiedById");
 
             migrationBuilder.CreateIndex(
-                name: "IX_BillingDetail_ProductId",
-                table: "BillingDetail",
+                name: "IX_BillingDetails_ProductId",
+                table: "BillingDetails",
                 column: "ProductId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Billings_CreatedById",
+                table: "Billings",
+                column: "CreatedById");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Billings_ModifiedById",
+                table: "Billings",
+                column: "ModifiedById");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ProductLogs_CreatedById",
@@ -259,13 +259,13 @@ namespace ManageStore.ApplicationDbContext.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "BillingDetail");
+                name: "BillingDetails");
 
             migrationBuilder.DropTable(
                 name: "ProductLogs");
 
             migrationBuilder.DropTable(
-                name: "Billing");
+                name: "Billings");
 
             migrationBuilder.DropTable(
                 name: "Products");

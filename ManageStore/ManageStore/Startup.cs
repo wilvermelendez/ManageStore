@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using ManageStore.BusinessAccess;
+using ManageStore.BusinessAccess.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -22,9 +24,11 @@ namespace ManageStore
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-
             ConfigureDataBase(services);
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IProductRepository, ProductRepository>();
+
             services.AddAutoMapper(typeof(Startup));
             services.AddSwaggerGen(setupAction =>
             {

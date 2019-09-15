@@ -53,7 +53,7 @@ namespace ManageStore.ApplicationDbContext.Migrations
 
                     b.HasIndex("ModifiedById");
 
-                    b.ToTable("Billing");
+                    b.ToTable("Billings");
                 });
 
             modelBuilder.Entity("ManageStore.Models.Models.BillingDetail", b =>
@@ -91,7 +91,7 @@ namespace ManageStore.ApplicationDbContext.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("BillingDetail");
+                    b.ToTable("BillingDetails");
                 });
 
             modelBuilder.Entity("ManageStore.Models.Models.Product", b =>
