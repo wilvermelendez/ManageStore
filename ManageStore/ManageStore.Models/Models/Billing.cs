@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using ManageStore.Models.Enum;
+using System;
 using System.ComponentModel.DataAnnotations;
-using System.Text;
-using ManageStore.Models.Enum;
 
 namespace ManageStore.Models.Models
 {
@@ -41,7 +39,7 @@ namespace ManageStore.Models.Models
         /// The product price for the bill
         /// </summary>
         public decimal Price { get; set; }
-      
+
         /// <summary>
         /// The status according to the called actions
         /// </summary>
@@ -54,6 +52,6 @@ namespace ManageStore.Models.Models
         /// Automatic generated creation user id when a product is created
         /// </summary>
         public User CreatedBy { get; set; }
-        
+
     }
 }

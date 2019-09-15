@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
+using Microsoft.OpenApi.Models;
+using System;
 
 namespace ManageStore
 {
@@ -28,7 +24,25 @@ namespace ManageStore
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
+            ConfigureDataBase(services);
             services.AddAutoMapper(typeof(Startup));
+            services.AddSwaggerGen(setupAction =>
+            {
+                setupAction.SwaggerDoc(
+                    "ManageStoreOpenAPISpecification",
+                    new OpenApiInfo
+                    {
+                        Title = "Manage Store API",
+                        Version = "1.0.0",
+                        Contact = new OpenApiContact
+                        {
+                            Email = "wilver.melendez@gmail.com",
+                            Name = "Wilver Melendez",
+                            Url = new Uri("https://github.com/wilvermelendez/ManageStore")
+                        }
+                    }
+                );
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -46,6 +60,13 @@ namespace ManageStore
 
             app.UseHttpsRedirection();
             app.UseMvc();
+        }
+
+        private void ConfigureDataBase(IServiceCollection services)
+        {
+            services.AddDbContextPool<ApplicationDbContext.ApplicationDbContext>(
+                options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
         }
     }
 }

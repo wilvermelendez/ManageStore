@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using ManageStore.Models.Enum;
+using System;
 using System.ComponentModel.DataAnnotations;
-using System.Reflection.Metadata;
-using System.Text;
-using ManageStore.Models.Enum;
 
 namespace ManageStore.Models.Models
 {
@@ -44,6 +41,6 @@ namespace ManageStore.Models.Models
         /// <summary>
         /// Automatic generated Modified user id when a product is modified
         /// </summary>
-        public User ModifiedBy{ get; set; }
+        public User ModifiedBy { get; set; }
     }
 }

@@ -1,6 +1,6 @@
-﻿using System;
+﻿using ManageStore.Models.Enum;
+using System;
 using System.ComponentModel.DataAnnotations;
-using ManageStore.Models.Enum;
 
 namespace ManageStore.Models.Models
 {

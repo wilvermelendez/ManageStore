@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ManageStore.Models.Enum
+﻿namespace ManageStore.Models.Enum
 {
     public enum RegisterStatus
     {
