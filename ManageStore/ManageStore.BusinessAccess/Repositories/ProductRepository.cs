@@ -1,4 +1,5 @@
 ﻿using ManageStore.Models.Models;
+using System.Threading.Tasks;
 
 namespace ManageStore.BusinessAccess.Repositories
 {
@@ -8,5 +9,11 @@ namespace ManageStore.BusinessAccess.Repositories
         {
 
         }
+
+        public async Task<Product> GetByNameAsync(string name)
+        {
+            return await SingleOrDefaultAsync(x => x.Name == name);
+        }
+
     }
 }

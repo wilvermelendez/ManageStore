@@ -49,6 +49,16 @@ namespace ManageStore.BusinessAccess.Repositories
             _dbSet.AddRange(entities);
         }
 
+        public void Update(TEntity entity)
+        {
+            _dbSet.Update(entity);
+        }
+
+        public void UpdateRange(IEnumerable<TEntity> entities)
+        {
+            _dbSet.UpdateRange(entities);
+        }
+
         public void Remove(TEntity entity)
         {
             _dbSet.Remove(entity);
