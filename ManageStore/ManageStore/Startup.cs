@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using ManageStore.BusinessAccess;
+using ManageStore.BusinessAccess.Helper;
 using ManageStore.BusinessAccess.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -34,6 +35,8 @@ namespace ManageStore
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IProductLikeRepository, ProductLikeRepository>();
+            services.AddHttpContextAccessor();
+            services.AddSingleton<ITokenFactory, JwtFactory>();
 
             services.AddAutoMapper(typeof(Startup));
             services.AddSwaggerGen(setupAction =>

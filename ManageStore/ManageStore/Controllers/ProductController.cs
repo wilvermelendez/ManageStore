@@ -44,7 +44,7 @@ namespace ManageStore.Controllers
         public async Task<IActionResult> GetProductsAsync()
         {
             var products = await _unitOfWork.Products.GetProductsAsync();
-            var productDto = _mapper.Map<IEnumerable<ProductDTO>>(products);
+            var productDto = _mapper.Map<IEnumerable<ProductDto>>(products);
             return Ok(productDto);
 
         }
@@ -60,7 +60,7 @@ namespace ManageStore.Controllers
         public async Task<IActionResult> GetProductsOrderedByAsync(string orderBy)
         {
             var products = await _unitOfWork.Products.GetProductsOrderedByAsync(orderBy);
-            var productDto = _mapper.Map<IEnumerable<ProductDTO>>(products);
+            var productDto = _mapper.Map<IEnumerable<ProductDto>>(products);
             return Ok(productDto);
 
         }
@@ -79,7 +79,7 @@ namespace ManageStore.Controllers
             var products = await _unitOfWork.Products.GetByNameAsync(name);
             if (products == null)
                 return NotFound($"Product with Name: {name} not found.");
-            var productDto = _mapper.Map<ProductDTO>(products);
+            var productDto = _mapper.Map<ProductDto>(products);
 
             return Ok(productDto);
         }
@@ -91,7 +91,7 @@ namespace ManageStore.Controllers
         [HttpPost]
         [Route("AddProduct")]
         //[Authorize(Roles = "Admin")]
-        public async Task<IActionResult> PostAsync([FromBody]ProductDTO productDto)
+        public async Task<IActionResult> PostAsync([FromBody]ProductDto productDto)
         {
             var existingProduct = await _unitOfWork.Products.GetByNameAsync(productDto.Name);
             if (existingProduct != null)
@@ -132,7 +132,7 @@ namespace ManageStore.Controllers
         [HttpPatch]
         [Route("UpdateStock")]
         //[Authorize(Roles = "Admin")]
-        public async Task<IActionResult> UpdateStockAsync([FromBody]ProductDTO productDto)
+        public async Task<IActionResult> UpdateStockAsync([FromBody]ProductDto productDto)
         {
 
             var existingProduct = await _unitOfWork.Products.GetAsync(productDto.Id);
@@ -153,7 +153,7 @@ namespace ManageStore.Controllers
         [HttpPatch]
         [Route("UpdatePrice")]
         //[Authorize(Roles = "Admin")]
-        public async Task<IActionResult> UpdatePriceAsync([FromBody]ProductDTO productDto)
+        public async Task<IActionResult> UpdatePriceAsync([FromBody]ProductDto productDto)
         {
             var existingProduct = await _unitOfWork.Products.GetAsync(productDto.Id);
             if (existingProduct == null)

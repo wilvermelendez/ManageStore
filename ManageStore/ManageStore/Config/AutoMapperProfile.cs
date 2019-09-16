@@ -8,16 +8,17 @@ namespace ManageStore.Config
     {
         public AutoMapperProfile()
         {
-            CreateMap<Product, ProductDTO>()
+            CreateMap<Product, ProductDto>()
                 .ForMember(dest => dest.CreatedBy,
                     opt => opt.MapFrom(
                         src => $"{src.CreatedBy.Name} {src.CreatedBy.LastName}"))
                 .ForMember(dest => dest.ModifiedBy,
                     opt => opt.MapFrom(
                         src => $"{src.ModifiedBy.Name} {src.ModifiedBy.LastName}"));
-            CreateMap<ProductDTO, Product>();
+            CreateMap<ProductDto, Product>();
             CreateMap<Product, ProductLog>();
             CreateMap<ProductLikeDto, ProductLike>();
+            CreateMap<UserDto, User>();
 
         }
     }

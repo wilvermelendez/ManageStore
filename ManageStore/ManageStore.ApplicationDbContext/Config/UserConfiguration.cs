@@ -18,11 +18,8 @@ namespace ManageStore.ApplicationDbContext.Config
             userBuilder.Property(x => x.Name).IsRequired();
             userBuilder.Property(x => x.LastName).HasMaxLength(80);
             userBuilder.Property(x => x.LastName).IsRequired();
-            userBuilder.Property(x => x.Email).HasMaxLength(150);
-            userBuilder.Property(x => x.Email).IsRequired();
-
-
-
+            userBuilder.Property(x => x.UserName).HasMaxLength(50);
+            userBuilder.Property(x => x.UserName).IsRequired();
 
         }
     }

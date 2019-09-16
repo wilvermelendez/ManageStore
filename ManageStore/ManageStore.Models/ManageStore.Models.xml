@@ -4,52 +4,52 @@
         <name>ManageStore.Models</name>
     </assembly>
     <members>
-        <member name="T:ManageStore.Models.DTO.ProductDTO">
+        <member name="T:ManageStore.Models.DTO.ProductDto">
             <summary>
             A product with Id, Name, Description, RegisterStatus, CreatedDateTime, CreatedBy, ModifieDateTime, ModifiedBy
             </summary>
         </member>
-        <member name="P:ManageStore.Models.DTO.ProductDTO.Id">
+        <member name="P:ManageStore.Models.DTO.ProductDto.Id">
             <summary>
             The id of the product
             </summary>
         </member>
-        <member name="P:ManageStore.Models.DTO.ProductDTO.Name">
+        <member name="P:ManageStore.Models.DTO.ProductDto.Name">
             <summary>
             The name of the product
             </summary>
         </member>
-        <member name="P:ManageStore.Models.DTO.ProductDTO.Description">
+        <member name="P:ManageStore.Models.DTO.ProductDto.Description">
             <summary>
             The description of the product
             </summary>
         </member>
-        <member name="P:ManageStore.Models.DTO.ProductDTO.Stock">
+        <member name="P:ManageStore.Models.DTO.ProductDto.Stock">
             <summary>
             The product stock
             </summary>
         </member>
-        <member name="P:ManageStore.Models.DTO.ProductDTO.Price">
+        <member name="P:ManageStore.Models.DTO.ProductDto.Price">
             <summary>
             The price of the product
             </summary>
         </member>
-        <member name="P:ManageStore.Models.DTO.ProductDTO.CreatedDateTime">
+        <member name="P:ManageStore.Models.DTO.ProductDto.CreatedDateTime">
             <summary>
             Automatic generated creation Datetime when a product is created
             </summary>
         </member>
-        <member name="P:ManageStore.Models.DTO.ProductDTO.CreatedBy">
+        <member name="P:ManageStore.Models.DTO.ProductDto.CreatedBy">
             <summary>
             Automatic generated creation user id when a product is created
             </summary>
         </member>
-        <member name="P:ManageStore.Models.DTO.ProductDTO.ModifieDateTime">
+        <member name="P:ManageStore.Models.DTO.ProductDto.ModifieDateTime">
             <summary>
             Automatic generated modified Datetime when a product is modified
             </summary>
         </member>
-        <member name="P:ManageStore.Models.DTO.ProductDTO.ModifiedBy">
+        <member name="P:ManageStore.Models.DTO.ProductDto.ModifiedBy">
             <summary>
             Automatic generated Modified user id when a product is modified
             </summary>
@@ -67,6 +67,36 @@
         <member name="P:ManageStore.Models.DTO.ProductLikeDto.UserId">
             <summary>
             The id of the User who likes this product
+            </summary>
+        </member>
+        <member name="T:ManageStore.Models.DTO.UserDto">
+            <summary>
+            User with Name, LastName, UserName, Password and UserRole
+            </summary>
+        </member>
+        <member name="P:ManageStore.Models.DTO.UserDto.Name">
+            <summary>
+            Name of the owner of the account
+            </summary>
+        </member>
+        <member name="P:ManageStore.Models.DTO.UserDto.LastName">
+            <summary>
+            Last Name of the owner of the account
+            </summary>
+        </member>
+        <member name="P:ManageStore.Models.DTO.UserDto.UserName">
+            <summary>
+            UserName of the owner of the account
+            </summary>
+        </member>
+        <member name="P:ManageStore.Models.DTO.UserDto.Password">
+            <summary>
+            Password of the owner of the account
+            </summary>
+        </member>
+        <member name="P:ManageStore.Models.DTO.UserDto.UserRole">
+            <summary>
+            Name of the owner of the account, 1 is Admin and 2 is User
             </summary>
         </member>
         <member name="T:ManageStore.Models.Models.Billing">

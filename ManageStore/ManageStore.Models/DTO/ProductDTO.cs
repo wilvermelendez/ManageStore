@@ -6,7 +6,7 @@ namespace ManageStore.Models.DTO
     /// <summary>
     /// A product with Id, Name, Description, RegisterStatus, CreatedDateTime, CreatedBy, ModifieDateTime, ModifiedBy
     /// </summary>
-    public class ProductDTO
+    public class ProductDto
     {
         /// <summary>
         /// The id of the product

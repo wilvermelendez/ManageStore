@@ -36,7 +36,7 @@
             <param name="name">Product Name</param>
             <returns>Return the product if it exists, if not it return not found</returns>
         </member>
-        <member name="M:ManageStore.Controllers.ProductController.PostAsync(ManageStore.Models.DTO.ProductDTO)">
+        <member name="M:ManageStore.Controllers.ProductController.PostAsync(ManageStore.Models.DTO.ProductDto)">
             <summary>
             Add a new product with fields Name, description, InitialStock, price
             </summary>
@@ -50,14 +50,14 @@
             <param name="id">Int id of existing product</param>
             <returns>IAction Result Ok if is possible to delete</returns>
         </member>
-        <member name="M:ManageStore.Controllers.ProductController.UpdateStockAsync(ManageStore.Models.DTO.ProductDTO)">
+        <member name="M:ManageStore.Controllers.ProductController.UpdateStockAsync(ManageStore.Models.DTO.ProductDto)">
             <summary>
             Update product stock
             </summary>
             <param name="productDto">Is required product Id and Stock</param>
             <returns>IAction Result Ok if is possible to update</returns>
         </member>
-        <member name="M:ManageStore.Controllers.ProductController.UpdatePriceAsync(ManageStore.Models.DTO.ProductDTO)">
+        <member name="M:ManageStore.Controllers.ProductController.UpdatePriceAsync(ManageStore.Models.DTO.ProductDto)">
             <summary>
             Update product price and log the price change
             </summary>
