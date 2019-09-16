@@ -16,6 +16,7 @@ namespace ManageStore.ApplicationDbContext.Config
 
             producBuilder.Property(x => x.Name).HasMaxLength(80);
             producBuilder.Property(x => x.Name).IsRequired();
+            producBuilder.Property(x => x.Stock).IsRequired();
             producBuilder.Property(x => x.Price).IsRequired().HasColumnType("decimal(18,4)");
             producBuilder.Property(x => x.Description).HasMaxLength(150);
 

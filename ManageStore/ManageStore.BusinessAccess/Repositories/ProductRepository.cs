@@ -1,4 +1,8 @@
-﻿using ManageStore.Models.Models;
+﻿using ManageStore.Models.Enum;
+using ManageStore.Models.Models;
+using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace ManageStore.BusinessAccess.Repositories
@@ -15,5 +19,23 @@ namespace ManageStore.BusinessAccess.Repositories
             return await SingleOrDefaultAsync(x => x.Name == name);
         }
 
+        public async Task<IEnumerable<Product>> GetProductsAsync()
+        {
+            return await GetByExpression(x => x.RegisterStatus == RegisterStatus.Enabled)
+                .Include(x => x.CreatedBy)
+                .Include(x => x.ModifiedBy)
+                .ToListAsync();
+        }
+        public async Task<IEnumerable<Product>> GetProductsOrderedByAsync(string name)
+        {
+            var products = await GetByExpression(x => x.RegisterStatus == RegisterStatus.Enabled)
+                .Include(x => x.CreatedBy)
+                .Include(x => x.ModifiedBy)
+                .ToListAsync();
+            //TODO is pending to order by popularity
+            var result = name == "name" ? products.OrderBy(x => x.Name) : products.OrderBy(x => x.Id);
+
+            return result;  
+        }
     }
 }

@@ -7,8 +7,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.OpenApi.Models;
+using Swashbuckle.AspNetCore.Swagger;
 using System;
+using System.IO;
 
 namespace ManageStore
 {
@@ -38,18 +39,20 @@ namespace ManageStore
             {
                 setupAction.SwaggerDoc(
                     "ManageStoreOpenAPISpecification",
-                    new OpenApiInfo
+                    new Info
                     {
                         Title = "Manage Store API",
                         Version = "1.0.0",
-                        Contact = new OpenApiContact
+                        Contact = new Contact
                         {
                             Email = "wilver.melendez@gmail.com",
                             Name = "Wilver Melendez",
-                            Url = new Uri("https://github.com/wilvermelendez/ManageStore")
+                            Url = "https://github.com/wilvermelendez/ManageStore"
                         }
                     }
                 );
+                setupAction.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, "ManageStore.xml"));
+                setupAction.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, "ManageStore.Models.xml"));
             });
         }
 
@@ -67,7 +70,18 @@ namespace ManageStore
             }
 
             app.UseHttpsRedirection();
+            app.UseSwagger();
+            app.UseSwaggerUI(setupAction =>
+            {
+                setupAction.SwaggerEndpoint(
+                    "/swagger/ManageStoreOpenAPISpecification/swagger.json",
+                    "Manage Store API"
+                );
+                setupAction.RoutePrefix = string.Empty;
+            });
+
             app.UseMvc();
+
         }
 
         private void ConfigureDataBase(IServiceCollection services)

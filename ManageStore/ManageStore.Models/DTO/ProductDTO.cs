@@ -1,13 +1,12 @@
-﻿using ManageStore.Models.Enum;
-using System;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace ManageStore.Models.Models
+namespace ManageStore.Models.DTO
 {
     /// <summary>
     /// A product with Id, Name, Description, RegisterStatus, CreatedDateTime, CreatedBy, ModifieDateTime, ModifiedBy
     /// </summary>
-    public class Product
+    public class ProductDTO
     {
         /// <summary>
         /// The id of the product
@@ -31,17 +30,13 @@ namespace ManageStore.Models.Models
         /// </summary>
         public decimal Price { get; set; }
         /// <summary>
-        /// The status according to the called actions
-        /// </summary>
-        public RegisterStatus RegisterStatus { get; set; }
-        /// <summary>
         /// Automatic generated creation Datetime when a product is created
         /// </summary>
         public DateTime CreatedDateTime { get; set; }
         /// <summary>
         /// Automatic generated creation user id when a product is created
         /// </summary>
-        public User CreatedBy { get; set; }
+        public string CreatedBy { get; set; }
         /// <summary>
         /// Automatic generated modified Datetime when a product is modified
         /// </summary>
@@ -49,6 +44,6 @@ namespace ManageStore.Models.Models
         /// <summary>
         /// Automatic generated Modified user id when a product is modified
         /// </summary>
-        public User ModifiedBy { get; set; }
+        public string ModifiedBy { get; set; }
     }
 }

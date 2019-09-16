@@ -28,9 +28,9 @@ namespace ManageStore.BusinessAccess.Repositories
             return _dbSet.ToList();
         }
 
-        public IEnumerable<TEntity> GetByExpression(Expression<Func<TEntity, bool>> predicate)
+        public IQueryable<TEntity> GetByExpression(Expression<Func<TEntity, bool>> predicate)
         {
-            return _dbSet.Where(predicate).ToList();
+            return _dbSet.Where(predicate);
         }
 
 

@@ -4,6 +4,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ManageStore.Models.Models
 {
+    /// <summary>
+    /// Detail of the billing, list of products with price and quantity 
+    /// </summary>
     public class BillingDetail
     {
         /// <summary>

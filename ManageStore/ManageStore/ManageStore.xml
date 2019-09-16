@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ManageStore</name>
+    </assembly>
+    <members>
+        <member name="T:ManageStore.Controllers.ProductController">
+            <summary>
+            Controller API that represent information about products
+            </summary>
+        </member>
+        <member name="M:ManageStore.Controllers.ProductController.#ctor(ManageStore.BusinessAccess.IUnitOfWork,AutoMapper.IMapper)">
+            <summary>
+            Constructor that required Unit of Work dependency injection
+            </summary>
+            <param name="unitOfWork">Unit of work pattern</param>
+            <param name="mapper"></param>
+        </member>
+        <member name="M:ManageStore.Controllers.ProductController.GetProductsAsync">
+            <summary>
+            Get all enabled products
+            </summary>
+            <returns>List of Products</returns>
+        </member>
+        <member name="M:ManageStore.Controllers.ProductController.GetProductsOrderedByAsync(System.String)">
+            <summary>
+            Get all products ordered by name or popularity
+            </summary>
+            <param name="orderBy">Set order by "name" or "popularity"</param>
+            <returns>List of Products</returns>
+        </member>
+        <member name="M:ManageStore.Controllers.ProductController.GetByName(System.String)">
+            <summary>
+            Get one product searching by it name
+            </summary>
+            <param name="name">Product Name</param>
+            <returns>Return the product if it exists, if not it return not found</returns>
+        </member>
+        <member name="M:ManageStore.Controllers.ProductController.Post(ManageStore.Models.DTO.ProductDTO)">
+            <summary>
+            Add a new product with fields Name, description, InitialStock, price
+            </summary>
+            <param name="productDto"></param>
+            <returns>Return ok if it was possible to save the product</returns>
+        </member>
+        <member name="M:ManageStore.Controllers.ProductController.Delete(System.Int32)">
+            <summary>
+            Delete a existent product
+            </summary>
+            <param name="id">Int id of existing product</param>
+            <returns>IAction Result Ok if is possible to delete</returns>
+        </member>
+        <member name="M:ManageStore.Controllers.ProductController.UpdateStock(ManageStore.Models.DTO.ProductDTO)">
+            <summary>
+            Update product stock
+            </summary>
+            <param name="productDto">Is required product Id and Stock</param>
+            <returns>IAction Result Ok if is possible to update</returns>
+        </member>
+        <member name="M:ManageStore.Controllers.ProductController.UpdatePrice(ManageStore.Models.DTO.ProductDTO)">
+            <summary>
+            Update product price and log the price change
+            </summary>
+            <param name="productDto">Is required product Id and price</param>
+            <returns>IAction Result Ok if is possible to update</returns>
+        </member>
+    </members>
+</doc>
