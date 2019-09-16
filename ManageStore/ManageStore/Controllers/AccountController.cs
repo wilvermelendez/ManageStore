@@ -11,6 +11,9 @@ using System.Threading.Tasks;
 
 namespace ManageStore.Controllers
 {
+    /// <summary>
+    /// Security using account for login and register users
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     [AllowAnonymous]
@@ -26,7 +29,12 @@ namespace ManageStore.Controllers
             _mapper = mapper;
             _tokenFactory = tokenFactory;
         }
-
+        /// <summary>
+        /// Register user 
+        /// Register User with Name, LastName, UserName, Password and UserRole
+        /// </summary>
+        /// <param name="userDto">User with Name, LastName, UserName, Password and UserRole</param>
+        /// <returns>Ok if the user doesn't exists and if all is ok</returns>
         [HttpPost]
         [Route("register")]
         public async Task<IActionResult> Register(UserDto userDto)
@@ -43,7 +51,11 @@ namespace ManageStore.Controllers
             await _unitOfWork.Complete();
             return Ok();
         }
-
+        /// <summary>
+        /// Login required user and password
+        /// </summary>
+        /// <param name="userDto">User with UserName and Password </param>
+        /// <returns>Return a jwt if the credentials a ok</returns>
         [HttpPost]
         [Route("Login")]
         public async Task<IActionResult> Login(UserDto userDto)
@@ -55,7 +67,7 @@ namespace ManageStore.Controllers
             var token = _tokenFactory.GenerateToken(user.UserName, user.UserRole);
             if (token == null)
                 return Unauthorized();
-            return Ok(token);
+            return Ok(new { token });
         }
     }
 }

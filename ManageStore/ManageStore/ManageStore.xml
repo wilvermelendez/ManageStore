@@ -4,6 +4,26 @@
         <name>ManageStore</name>
     </assembly>
     <members>
+        <member name="T:ManageStore.Controllers.AccountController">
+            <summary>
+            Security using account for login and register users
+            </summary>
+        </member>
+        <member name="M:ManageStore.Controllers.AccountController.Register(ManageStore.Models.DTO.UserDto)">
+            <summary>
+            Register user 
+            Register User with Name, LastName, UserName, Password and UserRole
+            </summary>
+            <param name="userDto">User with Name, LastName, UserName, Password and UserRole</param>
+            <returns>Ok if the user doesn't exists and if all is ok</returns>
+        </member>
+        <member name="M:ManageStore.Controllers.AccountController.Login(ManageStore.Models.DTO.UserDto)">
+            <summary>
+            Login required user and password
+            </summary>
+            <param name="userDto">User with UserName and Password </param>
+            <returns>Return a jwt if the credentials a ok</returns>
+        </member>
         <member name="T:ManageStore.Controllers.ProductController">
             <summary>
             Controller API that represent information about products

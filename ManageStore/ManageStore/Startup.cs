@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.AspNetCore.Swagger;
 using System;
+using System.Collections.Generic;
 using System.IO;
 
 namespace ManageStore
@@ -57,6 +58,18 @@ namespace ManageStore
                 );
                 setupAction.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, "ManageStore.xml"));
                 setupAction.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, "ManageStore.Models.xml"));
+                setupAction.AddSecurityDefinition("Bearer", new ApiKeyScheme()
+                {
+                    Description = "JWT Authorization header {token}",
+                    Name = "Authorization",
+                    In = "header",
+                    Type = "apiKey"
+                });
+                setupAction.AddSecurityRequirement(new Dictionary<string, IEnumerable<string>>
+                {
+                    { "Bearer", new string[] { } }
+                });
+                setupAction.DescribeAllEnumsAsStrings();
             });
         }
 

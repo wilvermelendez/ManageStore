@@ -90,7 +90,7 @@ namespace ManageStore.Controllers
         /// <returns>Return ok if it was possible to save the product</returns>
         [HttpPost]
         [Route("AddProduct")]
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> PostAsync([FromBody]ProductDto productDto)
         {
             var existingProduct = await _unitOfWork.Products.GetByNameAsync(productDto.Name);
@@ -111,7 +111,7 @@ namespace ManageStore.Controllers
         /// <returns>IAction Result Ok if is possible to delete</returns>
         [HttpDelete]
         [Route("DeleteProduct")]
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteAsync(int id)
         {
             var product = await _unitOfWork.Products.GetAsync(id);
@@ -131,7 +131,7 @@ namespace ManageStore.Controllers
         /// <returns>IAction Result Ok if is possible to update</returns>
         [HttpPatch]
         [Route("UpdateStock")]
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> UpdateStockAsync([FromBody]ProductDto productDto)
         {
 
@@ -152,7 +152,7 @@ namespace ManageStore.Controllers
         /// <returns>IAction Result Ok if is possible to update</returns>
         [HttpPatch]
         [Route("UpdatePrice")]
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> UpdatePriceAsync([FromBody]ProductDto productDto)
         {
             var existingProduct = await _unitOfWork.Products.GetAsync(productDto.Id);
@@ -187,7 +187,7 @@ namespace ManageStore.Controllers
         /// <returns>Return ok if it was possible to save the product like</returns>
         [HttpPost]
         [Route("ProductLike")]
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin, User")]
         public async Task<IActionResult> ProductLikeAsync([FromBody]ProductLikeDto productLikeDto)
         {
             //verifying if product and user exists on database
