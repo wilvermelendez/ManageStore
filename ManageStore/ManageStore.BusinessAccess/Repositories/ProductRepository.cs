@@ -31,11 +31,14 @@ namespace ManageStore.BusinessAccess.Repositories
             var products = await GetByExpression(x => x.RegisterStatus == RegisterStatus.Enabled)
                 .Include(x => x.CreatedBy)
                 .Include(x => x.ModifiedBy)
+                .Include(x => x.ProductLikes)
                 .ToListAsync();
             //TODO is pending to order by popularity
-            var result = name == "name" ? products.OrderBy(x => x.Name) : products.OrderBy(x => x.Id);
+            var result = name == "name"
+                ? products.OrderBy(x => x.Name)
+                : products.OrderByDescending(x => x.ProductLikes.Count());
 
-            return result;  
+            return result;
         }
     }
 }

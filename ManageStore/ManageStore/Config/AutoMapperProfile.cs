@@ -17,6 +17,7 @@ namespace ManageStore.Config
                         src => $"{src.ModifiedBy.Name} {src.ModifiedBy.LastName}"));
             CreateMap<ProductDTO, Product>();
             CreateMap<Product, ProductLog>();
+            CreateMap<ProductLikeDto, ProductLike>();
 
         }
     }

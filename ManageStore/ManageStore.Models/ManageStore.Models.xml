@@ -54,6 +54,21 @@
             Automatic generated Modified user id when a product is modified
             </summary>
         </member>
+        <member name="T:ManageStore.Models.DTO.ProductLikeDto">
+            <summary>
+            A product with ProductId and UserId
+            </summary>
+        </member>
+        <member name="P:ManageStore.Models.DTO.ProductLikeDto.ProductId">
+            <summary>
+            The id of the product liked
+            </summary>
+        </member>
+        <member name="P:ManageStore.Models.DTO.ProductLikeDto.UserId">
+            <summary>
+            The id of the User who likes this product
+            </summary>
+        </member>
         <member name="T:ManageStore.Models.Models.Billing">
             <summary>
             A billing With: Id
@@ -225,6 +240,11 @@
             </summary>
         </member>
         <member name="P:ManageStore.Models.Models.Product.ModifiedBy">
+            <summary>
+            Automatic generated Modified user id when a product is modified
+            </summary>
+        </member>
+        <member name="P:ManageStore.Models.Models.Product.ProductLikes">
             <summary>
             Automatic generated Modified user id when a product is modified
             </summary>

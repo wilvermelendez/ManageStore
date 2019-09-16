@@ -1,5 +1,6 @@
 ﻿using ManageStore.Models.Enum;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace ManageStore.Models.Models
@@ -50,5 +51,10 @@ namespace ManageStore.Models.Models
         /// Automatic generated Modified user id when a product is modified
         /// </summary>
         public User ModifiedBy { get; set; }
+
+        /// <summary>
+        /// Automatic generated Modified user id when a product is modified
+        /// </summary>
+        public IEnumerable<ProductLike> ProductLikes { get; set; }
     }
 }

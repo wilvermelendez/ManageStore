@@ -1,4 +1,4 @@
-﻿using ManageStore.Models.Models;
+﻿    using ManageStore.Models.Models;
 
 namespace ManageStore.BusinessAccess.Repositories
 {

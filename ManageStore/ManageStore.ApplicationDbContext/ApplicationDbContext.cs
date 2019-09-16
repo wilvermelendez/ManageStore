@@ -11,6 +11,7 @@ namespace ManageStore.ApplicationDbContext
         public DbSet<BillingDetail> BillingDetails { get; set; }
         public DbSet<ProductLog> ProductLogs { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<ProductLike> ProductLikes { get; set; }
 
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
@@ -28,6 +29,7 @@ namespace ManageStore.ApplicationDbContext
             modelBuilder.ApplyConfiguration(new ProductLogConfiguration());
             modelBuilder.ApplyConfiguration(new ProductConfiguration());
             modelBuilder.ApplyConfiguration(new UserConfiguration());
+            modelBuilder.ApplyConfiguration(new ProductLikeConfiguration());
         }
     }
 }

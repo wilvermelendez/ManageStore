@@ -33,6 +33,7 @@ namespace ManageStore
             services.AddScoped<IBillingRepository, BillingRepository>();
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IProductLikeRepository, ProductLikeRepository>();
 
             services.AddAutoMapper(typeof(Startup));
             services.AddSwaggerGen(setupAction =>

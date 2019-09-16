@@ -10,6 +10,7 @@ namespace ManageStore.BusinessAccess
         IProductLogRepository ProductLogs { get; }
         IBillingRepository Billings { get; }
         IUserRepository Users { get; }
+        IProductLikeRepository ProductLikes { get; }
         Task<int> Complete();
 
     }

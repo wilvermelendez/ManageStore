@@ -73,7 +73,7 @@ namespace ManageStore.Controllers
         [HttpGet]
         [Route("GetByName")]
         [AllowAnonymous]
-        public async Task<IActionResult> GetByName(string name)
+        public async Task<IActionResult> GetByNameAsync(string name)
         {
 
             var products = await _unitOfWork.Products.GetByNameAsync(name);
@@ -91,7 +91,7 @@ namespace ManageStore.Controllers
         [HttpPost]
         [Route("AddProduct")]
         //[Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Post([FromBody]ProductDTO productDto)
+        public async Task<IActionResult> PostAsync([FromBody]ProductDTO productDto)
         {
             var existingProduct = await _unitOfWork.Products.GetByNameAsync(productDto.Name);
             if (existingProduct != null)
@@ -112,7 +112,7 @@ namespace ManageStore.Controllers
         [HttpDelete]
         [Route("DeleteProduct")]
         //[Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Delete(int id)
+        public async Task<IActionResult> DeleteAsync(int id)
         {
             var product = await _unitOfWork.Products.GetAsync(id);
             if (product == null)
@@ -132,7 +132,7 @@ namespace ManageStore.Controllers
         [HttpPatch]
         [Route("UpdateStock")]
         //[Authorize(Roles = "Admin")]
-        public async Task<IActionResult> UpdateStock([FromBody]ProductDTO productDto)
+        public async Task<IActionResult> UpdateStockAsync([FromBody]ProductDTO productDto)
         {
 
             var existingProduct = await _unitOfWork.Products.GetAsync(productDto.Id);
@@ -153,7 +153,7 @@ namespace ManageStore.Controllers
         [HttpPatch]
         [Route("UpdatePrice")]
         //[Authorize(Roles = "Admin")]
-        public async Task<IActionResult> UpdatePrice([FromBody]ProductDTO productDto)
+        public async Task<IActionResult> UpdatePriceAsync([FromBody]ProductDTO productDto)
         {
             var existingProduct = await _unitOfWork.Products.GetAsync(productDto.Id);
             if (existingProduct == null)
@@ -176,6 +176,34 @@ namespace ManageStore.Controllers
             existingProduct.ModifiedBy = loggedUser;
             //add product log
             _unitOfWork.ProductLogs.Add(productLog);
+            await _unitOfWork.Complete();
+            return Ok();
+        }
+
+        /// <summary>
+        /// Add a new product like with fields productId and userId
+        /// </summary>
+        /// <param name="productLikeDto">Is required a productId and userId</param>
+        /// <returns>Return ok if it was possible to save the product like</returns>
+        [HttpPost]
+        [Route("ProductLike")]
+        //[Authorize(Roles = "Admin")]
+        public async Task<IActionResult> ProductLikeAsync([FromBody]ProductLikeDto productLikeDto)
+        {
+            //verifying if product and user exists on database
+            var existingProduct = await _unitOfWork.Products.GetAsync(productLikeDto.ProductId);
+            if (existingProduct == null)
+                return NotFound($"Product with Id: {productLikeDto.ProductId} not found.");
+            var user = await _unitOfWork.Users.GetAsync(productLikeDto.UserId);
+            if (user == null)
+                return NotFound($"User with Id: {productLikeDto.UserId} not found.");
+            //mapping productLikeDto to ProductLike
+            var productLike = _mapper.Map<ProductLike>(productLikeDto);
+            productLike.Product = existingProduct;
+            productLike.User = user;
+            productLike.CreatedDateTime = DateTime.Now;
+            //Adding product like
+            _unitOfWork.ProductLikes.Add(productLike);
             await _unitOfWork.Complete();
             return Ok();
         }
