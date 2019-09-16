@@ -28,6 +28,10 @@ namespace ManageStore
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<IProductLogRepository, ProductLogRepository>();
+            services.AddScoped<IBillingRepository, BillingRepository>();
+            services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
 
             services.AddAutoMapper(typeof(Startup));
             services.AddSwaggerGen(setupAction =>
