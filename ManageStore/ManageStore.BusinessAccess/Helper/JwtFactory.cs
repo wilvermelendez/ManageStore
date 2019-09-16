@@ -38,7 +38,7 @@ namespace ManageStore.BusinessAccess.Helper
                 Expires = DateTime.UtcNow.AddMinutes(expiryDuration),
                 Subject = new ClaimsIdentity(new List<Claim>
                 {
-                    new Claim(UserIdClaim, userId.ToString()),
+                    new Claim(UserIdClaim, userId),
                     new Claim(RoleClaim, role.ToString())
                 }),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(signingKey), SecurityAlgorithms.HmacSha256Signature)

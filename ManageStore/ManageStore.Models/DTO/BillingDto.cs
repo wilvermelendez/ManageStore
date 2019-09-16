@@ -1,19 +1,16 @@
-﻿using ManageStore.Models.Enum;
+﻿using ManageStore.Models.Models;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
-namespace ManageStore.Models.Models
+namespace ManageStore.Models.DTO
 {
     /// <summary>
-    /// A billing With: Id
+    /// 
     /// </summary>
-    public class Billing
-    {
-        /// <summary>
-        /// The id of the product
-        /// </summary>
-        [Key]
+    public class BillingDto
+    {/// <summary>
+     /// The id of the product
+     /// </summary>
         public int Id { get; set; }
 
         /// <summary>
@@ -22,7 +19,7 @@ namespace ManageStore.Models.Models
         public string VoucherNumber { get; set; }
 
         /// <summary>
-        /// The billing receipt type
+        /// The billing receipt type: Invoice = 1 and FiscalCredit = 2
         /// </summary>
         public ReceiptType ReceiptType { get; set; }
 
@@ -34,11 +31,6 @@ namespace ManageStore.Models.Models
         /// The lastname of the buyer
         /// </summary>
         public string CustomerLastName { get; set; }
-
-        /// <summary>
-        /// The status according to the called actions
-        /// </summary>
-        public RegisterStatus RegisterStatus { get; set; }
         /// <summary>
         /// Automatic generated creation Datetime when a product is created
         /// </summary>
@@ -46,17 +38,17 @@ namespace ManageStore.Models.Models
         /// <summary>
         /// Automatic generated creation user id when a product is created
         /// </summary>
-        public User CreatedBy { get; set; }
+        public string CreatedBy { get; set; }
         /// <summary>
-        /// Automatic generated Modified datetime when a product is modified
+        /// Automatic generated modified Datetime when a product is modified
         /// </summary>
         public DateTime? ModifieDateTime { get; set; }
         /// <summary>
         /// Automatic generated Modified user id when a product is modified
         /// </summary>
-        public User ModifiedBy { get; set; }
+        public string ModifiedBy { get; set; }
 
-        public IEnumerable<BillingDetail> BillingDetails { get; set; }
 
+        public IEnumerable<BillingDetailDto> BillingDetails { get; set; }
     }
 }

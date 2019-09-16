@@ -97,6 +97,7 @@ namespace ManageStore.Controllers
             if (existingProduct != null)
                 return BadRequest("Error: the product is registered");
             var product = _mapper.Map<Product>(productDto);
+
             product.CreatedDateTime = DateTime.Now;
             product.RegisterStatus = RegisterStatus.Enabled;
             product.CreatedBy = await _unitOfWork.Users.GetAsync(1);
@@ -187,7 +188,7 @@ namespace ManageStore.Controllers
         /// <returns>Return ok if it was possible to save the product like</returns>
         [HttpPost]
         [Route("ProductLike")]
-        [Authorize(Roles = "Admin, User")]
+        [Authorize(Roles = "Admin,User")]
         public async Task<IActionResult> ProductLikeAsync([FromBody]ProductLikeDto productLikeDto)
         {
             //verifying if product and user exists on database

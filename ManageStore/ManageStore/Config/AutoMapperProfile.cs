@@ -19,6 +19,14 @@ namespace ManageStore.Config
             CreateMap<Product, ProductLog>();
             CreateMap<ProductLikeDto, ProductLike>();
             CreateMap<UserDto, User>();
+            CreateMap<BillingDetailDto, BillingDetail>();
+            CreateMap<BillingDetail, BillingDetailDto>();
+            CreateMap<BillingDto, Billing>()
+                .ForMember(dest => dest.BillingDetails,
+                    opt => opt.MapFrom(src => src.BillingDetails));
+            CreateMap<Billing, BillingDto>()
+                .ForMember(dest => dest.BillingDetails,
+                    opt => opt.MapFrom(src => src.BillingDetails));
 
         }
     }

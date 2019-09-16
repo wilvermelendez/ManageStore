@@ -2,12 +2,14 @@
 using ManageStore.BusinessAccess;
 using ManageStore.BusinessAccess.Helper;
 using ManageStore.BusinessAccess.Repositories;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Tokens;
 using Swashbuckle.AspNetCore.Swagger;
 using System;
 using System.Collections.Generic;
@@ -71,6 +73,19 @@ namespace ManageStore
                 });
                 setupAction.DescribeAllEnumsAsStrings();
             });
+
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options =>
+                {
+                    var signingKey = Convert.FromBase64String(Configuration["Jwt:SigningSecret"]);
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuer = false,
+                        ValidateAudience = false,
+                        ValidateIssuerSigningKey = true,
+                        IssuerSigningKey = new SymmetricSecurityKey(signingKey)
+                    };
+                });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -87,6 +102,7 @@ namespace ManageStore
             }
 
             app.UseHttpsRedirection();
+            app.UseAuthentication();
             app.UseSwagger();
             app.UseSwaggerUI(setupAction =>
             {

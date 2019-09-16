@@ -24,6 +24,33 @@
             <param name="userDto">User with UserName and Password </param>
             <returns>Return a jwt if the credentials a ok</returns>
         </member>
+        <member name="M:ManageStore.Controllers.BillingController.#ctor(ManageStore.BusinessAccess.IUnitOfWork,AutoMapper.IMapper)">
+            <summary>
+            Constructor that required Unit of Work dependency injection
+            </summary>
+            <param name="unitOfWork">Unit of work pattern</param>
+            <param name="mapper"></param>
+        </member>
+        <member name="M:ManageStore.Controllers.BillingController.GetBillById(System.String)">
+            <summary>
+            Get one Bill by voucher number
+            </summary>
+            /// <param name="voucherNumber">String voucher param</param>
+            <returns>Bill if it exists</returns>
+        </member>
+        <member name="M:ManageStore.Controllers.BillingController.GetBills">
+            <summary>
+            Get bills
+            </summary>
+            <returns>List of bills</returns>
+        </member>
+        <member name="M:ManageStore.Controllers.BillingController.AddBill(ManageStore.Models.DTO.BillingDto)">
+            <summary>
+            Add a new product like with fields productId and userId
+            </summary>
+            <param name="billingDto"></param>
+            <returns>Return ok if it was possible to save the product like</returns>
+        </member>
         <member name="T:ManageStore.Controllers.ProductController">
             <summary>
             Controller API that represent information about products

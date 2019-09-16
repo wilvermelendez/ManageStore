@@ -4,14 +4,16 @@ using ManageStore.ApplicationDbContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ManageStore.ApplicationDbContext.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190916175004_UpdateBillingAndBillingDetail")]
+    partial class UpdateBillingAndBillingDetail
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -64,6 +66,8 @@ namespace ManageStore.ApplicationDbContext.Migrations
 
                     b.Property<int>("BillingId");
 
+                    b.Property<int?>("BillingId1");
+
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,4)");
 
@@ -74,6 +78,8 @@ namespace ManageStore.ApplicationDbContext.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("BillingId");
+
+                    b.HasIndex("BillingId1");
 
                     b.HasIndex("ProductId");
 
@@ -224,9 +230,13 @@ namespace ManageStore.ApplicationDbContext.Migrations
             modelBuilder.Entity("ManageStore.Models.Models.BillingDetail", b =>
                 {
                     b.HasOne("ManageStore.Models.Models.Billing", "Billing")
-                        .WithMany("BillingDetails")
+                        .WithMany()
                         .HasForeignKey("BillingId")
                         .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("ManageStore.Models.Models.Billing")
+                        .WithMany("BillingDetails")
+                        .HasForeignKey("BillingId1");
 
                     b.HasOne("ManageStore.Models.Models.Product", "Product")
                         .WithMany()
