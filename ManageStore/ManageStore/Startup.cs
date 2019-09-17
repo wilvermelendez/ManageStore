@@ -86,6 +86,13 @@ namespace ManageStore
                         IssuerSigningKey = new SymmetricSecurityKey(signingKey)
                     };
                 });
+
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowMyOrigin",
+                    builder => builder.WithOrigins("https://localhost:44328"));
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -114,7 +121,7 @@ namespace ManageStore
             });
 
             app.UseMvc();
-
+            app.UseCors("AllowMyOrigin");
         }
 
         private void ConfigureDataBase(IServiceCollection services)

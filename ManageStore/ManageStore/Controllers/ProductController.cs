@@ -4,6 +4,7 @@ using ManageStore.Models.DTO;
 using ManageStore.Models.Enum;
 using ManageStore.Models.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,7 @@ namespace ManageStore.Controllers
     /// </summary>
     [Route("api/[controller]")]
     [ApiController]
+    [EnableCors("AllowMyOrigin")]
     public class ProductController : ControllerBase
     {
         private readonly IUnitOfWork _unitOfWork;
@@ -39,6 +41,7 @@ namespace ManageStore.Controllers
         /// </summary>
         /// <returns>List of Products</returns>
         [HttpGet]
+        [EnableCors("AllowMyOrigin")]
         [Route("GetProducts")]
         [AllowAnonymous]
         public async Task<IActionResult> GetProductsAsync()
