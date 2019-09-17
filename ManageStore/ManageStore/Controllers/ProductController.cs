@@ -58,10 +58,15 @@ namespace ManageStore.Controllers
         /// <param name="orderBy">Set order by "name" or "popularity"</param>
         /// <returns>List of Products</returns>
         [HttpGet]
-        [Route("GetProductsOrderedBy")]
+        [Route("GetProductsOrderedBy/{orderBy}")]
         [AllowAnonymous]
         public async Task<IActionResult> GetProductsOrderedByAsync(string orderBy)
         {
+            if (orderBy != "name" && orderBy != "popularity")
+            {
+                return BadRequest("Not valid sort option.");
+            }
+
             var products = await _unitOfWork.Products.GetProductsOrderedByAsync(orderBy);
             var productDto = _mapper.Map<IEnumerable<ProductDto>>(products);
             return Ok(productDto);
@@ -74,7 +79,7 @@ namespace ManageStore.Controllers
         /// <param name="name">Product Name</param>
         /// <returns>Return the product if it exists, if not it return not found</returns>
         [HttpGet]
-        [Route("GetByName")]
+        [Route("GetByName/{name}")]
         [AllowAnonymous]
         public async Task<IActionResult> GetByNameAsync(string name)
         {
@@ -114,7 +119,7 @@ namespace ManageStore.Controllers
         /// <param name="id">Int id of existing product</param>
         /// <returns>IAction Result Ok if is possible to delete</returns>
         [HttpDelete]
-        [Route("DeleteProduct")]
+        [Route("DeleteProduct/{id}")]
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteAsync(int id)
         {
