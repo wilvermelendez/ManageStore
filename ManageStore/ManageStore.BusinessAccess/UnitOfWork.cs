@@ -20,7 +20,7 @@ namespace ManageStore.BusinessAccess
         public IProductRepository Products { get; }
         public IProductLogRepository ProductLogs { get; }
         public IBillingRepository Billings { get; }
-        public IUserRepository Users { get; }
+        public IUserRepository Users { get; set; }
         public IProductLikeRepository ProductLikes { get; }
 
         public async Task<int> Complete()
