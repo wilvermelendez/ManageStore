@@ -1,0 +1,675 @@
+{
+	"info": {
+		"_postman_id": "12c2ef36-1af6-46af-85c1-768b426fc783",
+		"name": "ManageStore",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Register Admin",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Wilver\",\r\n  \"lastname\": \"Melendez\",\r\n  \"username\": \"wimelendez\",\r\n  \"password\": \"@dmin\",\r\n  \"userrole\": 1,\r\n}"
+						},
+						"url": {
+							"raw": "https://localhost:44307/api/Account/register",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44307",
+							"path": [
+								"api",
+								"Account",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Wilver\",\r\n  \"lastname\": \"Melendez\",\r\n  \"username\": \"User\",\r\n  \"password\": \"Tester@01\",\r\n  \"userrole\": 2,\r\n}"
+						},
+						"url": {
+							"raw": "https://localhost:44307/api/Account/register",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44307",
+							"path": [
+								"api",
+								"Account",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login Admin",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d3d867f3-5994-4309-b854-e9fd90a92812",
+								"exec": [
+									"const response=pm.response.json()",
+									"pm.globals.set(\"jwt_token\", response.token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJ3aW1lbGVuZGV6Iiwicm9sZSI6IkFkbWluIiwibmJmIjoxNTY4NjE2Mjk0LCJleHAiOjE1Njg2MTc0OTQsImlhdCI6MTU2ODYxNjI5NH0.WJDujGllpEwcfuruXtICKozAfNjLOY7jUCzpaa1-HGA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"wimelendez\",\r\n  \"password\": \"@dmin\",\r\n}"
+						},
+						"url": {
+							"raw": "https://localhost:44307/api/Account/Login",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44307",
+							"path": [
+								"api",
+								"Account",
+								"Login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2dec62b3-06e9-45a2-980d-a72d3609bfe2",
+								"exec": [
+									"const response=pm.response.json()",
+									"pm.globals.set(\"jwt_token\", response.token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"User\",\r\n  \"password\": \"Tester@01\",\r\n}"
+						},
+						"url": {
+							"raw": "https://localhost:44307/api/Account/Login",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44307",
+							"path": [
+								"api",
+								"Account",
+								"Login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login Not existent user",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"other\",\r\n  \"password\": \"Tester@01\",\r\n}"
+						},
+						"url": {
+							"raw": "https://localhost:44307/api/Account/Login",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44307",
+							"path": [
+								"api",
+								"Account",
+								"Login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "Add product",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Galleta\",\r\n  \"Description\":\"Galleta\",\r\n  \"stock\": 12,\r\n  \"price\": 0.50\r\n}"
+						},
+						"url": {
+							"raw": "https://localhost:44307/api/product/AddProduct",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44307",
+							"path": [
+								"api",
+								"product",
+								"AddProduct"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetProducts",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://localhost:44307/api/product/GetProducts",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44307",
+							"path": [
+								"api",
+								"product",
+								"GetProducts"
+							]
+						},
+						"description": "Get list of enabled products"
+					},
+					"response": []
+				},
+				{
+					"name": "GetProdutByName",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Galleta\",\r\n"
+						},
+						"url": {
+							"raw": "https://localhost:44307/api/product/GetByName/Galleta",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44307",
+							"path": [
+								"api",
+								"product",
+								"GetByName",
+								"Galleta"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update product stock",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 1,\r\n  \"stock\": 125\r\n}"
+						},
+						"url": {
+							"raw": "https://localhost:44307/api/product/UpdateStock",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44307",
+							"path": [
+								"api",
+								"product",
+								"UpdateStock"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update product price",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 1,\r\n  \"price\": 0.12\r\n}"
+						},
+						"url": {
+							"raw": "https://localhost:44307/api/product/UpdatePrice",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44307",
+							"path": [
+								"api",
+								"product",
+								"UpdatePrice"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetProducts order by name",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://localhost:44307/api/product/GetProductsOrderedBy/name",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44307",
+							"path": [
+								"api",
+								"product",
+								"GetProductsOrderedBy",
+								"name"
+							]
+						},
+						"description": "Get list of enabled products"
+					},
+					"response": []
+				},
+				{
+					"name": "GetProducts order by popularity",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://localhost:44307/api/product/GetProductsOrderedBy/popularity",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44307",
+							"path": [
+								"api",
+								"product",
+								"GetProductsOrderedBy",
+								"popularity"
+							]
+						},
+						"description": "Get list of enabled products"
+					},
+					"response": []
+				},
+				{
+					"name": "Add product like",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"ProductId\": 1,\r\n  \"UserId\":1\r\n}"
+						},
+						"url": {
+							"raw": "https://localhost:44307/api/product/ProductLike",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44307",
+							"path": [
+								"api",
+								"product",
+								"ProductLike"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete product",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 1,\r\n  \r\n}"
+						},
+						"url": {
+							"raw": "https://localhost:44307/api/product/DeleteProduct/2",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44307",
+							"path": [
+								"api",
+								"product",
+								"DeleteProduct",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Billing",
+			"item": [
+				{
+					"name": "Add Bill",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"voucherNumber\": \"1\",\r\n  \"receiptType\": 1,\r\n  \"customerName\": \"Wilver\",\r\n  \"customerLastName\": \"Melendez\",\r\n    \"billingDetails\": [\r\n    {\r\n      \r\n      \"productId\": 1,\r\n      \"quantity\": 10,\r\n      \"price\": 0.12\r\n    }\r\n  ]\r\n}"
+						},
+						"url": {
+							"raw": "https://localhost:44307/api/Billing/AddBill",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44307",
+							"path": [
+								"api",
+								"Billing",
+								"AddBill"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Bills",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://localhost:44307/api/Billing/GetBills",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44307",
+							"path": [
+								"api",
+								"Billing",
+								"GetBills"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Bill by Voucher number",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://localhost:44307/api/Billing/GetBillByVoucherNumber/1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44307",
+							"path": [
+								"api",
+								"Billing",
+								"GetBillByVoucherNumber",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

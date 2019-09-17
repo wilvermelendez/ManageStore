@@ -1,0 +1,122 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ManageStore</name>
+    </assembly>
+    <members>
+        <member name="T:ManageStore.Controllers.AccountController">
+            <summary>
+            Security using account for login and register users
+            </summary>
+        </member>
+        <member name="M:ManageStore.Controllers.AccountController.Register(ManageStore.Models.DTO.UserDto)">
+            <summary>
+            Register user 
+            Register User with Name, LastName, UserName, Password and UserRole
+            </summary>
+            <param name="userDto">User with Name, LastName, UserName, Password and UserRole</param>
+            <returns>Ok if the user doesn't exists and if all is ok</returns>
+        </member>
+        <member name="M:ManageStore.Controllers.AccountController.Login(ManageStore.Models.DTO.UserDto)">
+            <summary>
+            Login required user and password
+            </summary>
+            <param name="userDto">User with UserName and Password </param>
+            <returns>Return a jwt if the credentials a ok</returns>
+        </member>
+        <member name="M:ManageStore.Controllers.BillingController.#ctor(ManageStore.BusinessAccess.IUnitOfWork,AutoMapper.IMapper)">
+            <summary>
+            Constructor that required Unit of Work dependency injection
+            </summary>
+            <param name="unitOfWork">Unit of work pattern</param>
+            <param name="mapper"></param>
+        </member>
+        <member name="M:ManageStore.Controllers.BillingController.GetBillById(System.String)">
+            <summary>
+            Get one Bill by voucher number
+            </summary>
+            /// <param name="voucherNumber">String voucher param</param>
+            <returns>Bill if it exists</returns>
+        </member>
+        <member name="M:ManageStore.Controllers.BillingController.GetBills">
+            <summary>
+            Get bills
+            </summary>
+            <returns>List of bills</returns>
+        </member>
+        <member name="M:ManageStore.Controllers.BillingController.AddBill(ManageStore.Models.DTO.BillingDto)">
+            <summary>
+            Add a new product like with fields productId and userId
+            </summary>
+            <param name="billingDto"></param>
+            <returns>Return ok if it was possible to save the product like</returns>
+        </member>
+        <member name="T:ManageStore.Controllers.ProductController">
+            <summary>
+            Controller API that represent information about products
+            </summary>
+        </member>
+        <member name="M:ManageStore.Controllers.ProductController.#ctor(ManageStore.BusinessAccess.IUnitOfWork,AutoMapper.IMapper)">
+            <summary>
+            Constructor that required Unit of Work dependency injection
+            </summary>
+            <param name="unitOfWork">Unit of work pattern</param>
+            <param name="mapper"></param>
+        </member>
+        <member name="M:ManageStore.Controllers.ProductController.GetProductsAsync">
+            <summary>
+            Get all enabled products
+            </summary>
+            <returns>List of Products</returns>
+        </member>
+        <member name="M:ManageStore.Controllers.ProductController.GetProductsOrderedByAsync(System.String)">
+            <summary>
+            Get all products ordered by name or popularity
+            </summary>
+            <param name="orderBy">Set order by "name" or "popularity"</param>
+            <returns>List of Products</returns>
+        </member>
+        <member name="M:ManageStore.Controllers.ProductController.GetByNameAsync(System.String)">
+            <summary>
+            Get one product searching by it name
+            </summary>
+            <param name="name">Product Name</param>
+            <returns>Return the product if it exists, if not it return not found</returns>
+        </member>
+        <member name="M:ManageStore.Controllers.ProductController.PostAsync(ManageStore.Models.DTO.ProductDto)">
+            <summary>
+            Add a new product with fields Name, description, InitialStock, price
+            </summary>
+            <param name="productDto"></param>
+            <returns>Return ok if it was possible to save the product</returns>
+        </member>
+        <member name="M:ManageStore.Controllers.ProductController.DeleteAsync(System.Int32)">
+            <summary>
+            Delete a existent product
+            </summary>
+            <param name="id">Int id of existing product</param>
+            <returns>IAction Result Ok if is possible to delete</returns>
+        </member>
+        <member name="M:ManageStore.Controllers.ProductController.UpdateStockAsync(ManageStore.Models.DTO.ProductDto)">
+            <summary>
+            Update product stock
+            </summary>
+            <param name="productDto">Is required product Id and Stock</param>
+            <returns>IAction Result Ok if is possible to update</returns>
+        </member>
+        <member name="M:ManageStore.Controllers.ProductController.UpdatePriceAsync(ManageStore.Models.DTO.ProductDto)">
+            <summary>
+            Update product price and log the price change
+            </summary>
+            <param name="productDto">Is required product Id and price</param>
+            <returns>IAction Result Ok if is possible to update</returns>
+        </member>
+        <member name="M:ManageStore.Controllers.ProductController.ProductLikeAsync(ManageStore.Models.DTO.ProductLikeDto)">
+            <summary>
+            Add a new product like with fields productId and userId
+            </summary>
+            <param name="productLikeDto">Is required a productId and userId</param>
+            <returns>Return ok if it was possible to save the product like</returns>
+        </member>
+    </members>
+</doc>

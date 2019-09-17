@@ -5,6 +5,20 @@ VisualStudioVersion = 16.0.29215.179
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ManageStore", "ManageStore\ManageStore.csproj", "{96780D35-9D9B-455A-9992-9B4DAB55A287}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Building Blocks", "Building Blocks", "{D21D5EE4-AA40-4489-85E5-880C8D8E94EB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ManageStore.Models", "ManageStore.Models\ManageStore.Models.csproj", "{099278C1-5110-4881-9267-C56A476A0AEB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ManageStore.ApplicationDbContext", "ManageStore.ApplicationDbContext\ManageStore.ApplicationDbContext.csproj", "{72E94D48-B393-47DD-8C55-5E8ACDA06BB9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ManageStore.BusinessAccess", "ManageStore.BusinessAccess\ManageStore.BusinessAccess.csproj", "{028AF394-152D-477D-9872-6849A7D1A35B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{ED3EA483-60E8-41AF-9BED-8C913CA51E1B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ManageStoreTest", "ManageStoreTest\ManageStoreTest.csproj", "{83890198-C309-4F67-AD44-5C0C7DB49D84}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ManageStoreUI", "ManageStoreUI\ManageStoreUI.csproj", "{D765E106-F784-48EB-A9D5-EA6BA6F6109D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,9 +29,35 @@ Global
 		{96780D35-9D9B-455A-9992-9B4DAB55A287}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{96780D35-9D9B-455A-9992-9B4DAB55A287}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{96780D35-9D9B-455A-9992-9B4DAB55A287}.Release|Any CPU.Build.0 = Release|Any CPU
+		{099278C1-5110-4881-9267-C56A476A0AEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{099278C1-5110-4881-9267-C56A476A0AEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{099278C1-5110-4881-9267-C56A476A0AEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{099278C1-5110-4881-9267-C56A476A0AEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72E94D48-B393-47DD-8C55-5E8ACDA06BB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72E94D48-B393-47DD-8C55-5E8ACDA06BB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72E94D48-B393-47DD-8C55-5E8ACDA06BB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72E94D48-B393-47DD-8C55-5E8ACDA06BB9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{028AF394-152D-477D-9872-6849A7D1A35B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{028AF394-152D-477D-9872-6849A7D1A35B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{028AF394-152D-477D-9872-6849A7D1A35B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{028AF394-152D-477D-9872-6849A7D1A35B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83890198-C309-4F67-AD44-5C0C7DB49D84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83890198-C309-4F67-AD44-5C0C7DB49D84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83890198-C309-4F67-AD44-5C0C7DB49D84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83890198-C309-4F67-AD44-5C0C7DB49D84}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D765E106-F784-48EB-A9D5-EA6BA6F6109D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D765E106-F784-48EB-A9D5-EA6BA6F6109D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D765E106-F784-48EB-A9D5-EA6BA6F6109D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D765E106-F784-48EB-A9D5-EA6BA6F6109D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{099278C1-5110-4881-9267-C56A476A0AEB} = {D21D5EE4-AA40-4489-85E5-880C8D8E94EB}
+		{72E94D48-B393-47DD-8C55-5E8ACDA06BB9} = {D21D5EE4-AA40-4489-85E5-880C8D8E94EB}
+		{028AF394-152D-477D-9872-6849A7D1A35B} = {D21D5EE4-AA40-4489-85E5-880C8D8E94EB}
+		{83890198-C309-4F67-AD44-5C0C7DB49D84} = {ED3EA483-60E8-41AF-9BED-8C913CA51E1B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BE66ABDD-7AE8-4D9C-BA92-0665EE6392FF}
