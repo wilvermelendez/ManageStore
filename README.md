@@ -43,7 +43,8 @@ This challenge is designed to put your skills to the test by designing and build
  - Swashbuckle for Open Api documentation
  - NUnit
  - Moq
- - Postman 
+ - Postman
+ - Scrum with trello [Board link](https://trello.com/b/Z2CCfslt/manage-store)
  
 ## How to setup and execute   ##
  1. Clone the [repository](https://github.com/wilvermelendez/ManageStore.git)
